@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class InsertData {
+	
 	PreparedStatement ps = null;
 	Connection con = null;
 	public void insertStudentData(int rollNo, String firstName,String middleName,String lastName,long mobileNo,String city,String password ) {
@@ -19,11 +20,17 @@ public class InsertData {
 		ps.setString(6,city);
 		ps.setString(7,password);
 		int i = ps.executeUpdate();
-		System.out.println("Record inserted Successfully..."+i);
+		System.out.println("Register student Successfully...");
+		ps.close();
+		con.close();
+		
 	} catch (Exception e) {
 		e.printStackTrace();
 	}	
 	}
+	
+	
+	
 
 	public static void main(String[] args) {
 	
