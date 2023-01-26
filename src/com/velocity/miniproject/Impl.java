@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 
@@ -18,6 +19,7 @@ public class Impl {
 	public void checkStud(int roll_no,String passward) {
 		query="select * from studreg where roll_no=? And passward=?";
 		ResultSet rs=null;
+		Scanner sc=new Scanner(System.in);
 		
 		try {
 			ps=conn.prepareStatement(query);
@@ -26,8 +28,25 @@ public class Impl {
 			rs=ps.executeQuery();
 			
 			if(rs.next()) {
-				System.out.println("start quiz");
-				displayQuestiond();
+				System.out.println("Press y to start the quiz");
+				Character y=sc.nextLine().charAt(0);
+				if(y.equals('y')) {
+					query="select roll_no from course where roll_no=? ";
+					ps=conn.prepareStatement(query);
+					ps.setInt(1, roll_no);
+					rs=ps.executeQuery();
+					if(rs.next()) {
+						System.out.println("y are already attending the quiz");
+					}
+					else {
+						System.out.println("start quize");
+				
+					}
+				
+				}
+				else {
+					System.exit(0);
+				}
 			}
 			else {
 
@@ -46,7 +65,7 @@ public class Impl {
 	
 	public void displayQuestiond() {
 		try {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM questionbank\r\n"+"ORDER BY RAND()\r\n"
+		ps = conn.prepareStatement("SELECT * FROM questionbank\r\n"+"ORDER BY RAND()\r\n"
 					);
 		ResultSet rs = ps.executeQuery();
 		Scanner sc = new Scanner(System.in);
@@ -84,4 +103,74 @@ public class Impl {
 		}
 	
 	}
+	
+	public void displaystud(){
+		
+		query="select studreg.roll_no,studreg.firstName,studreg.middleName,studreg.lastName,studreg.city,studreg.mobile,course.marks from studreg left join course on\r\n"
+				+ "studreg.roll_no=course.roll_no";
+		try {
+
+			Statement stmt=conn.createStatement();
+			ResultSet rs=stmt.executeQuery(query);
+			while(rs.next()) {
+				
+				int roll_no=(rs.getInt("roll_no"));
+				String firstName=(rs.getString("firstName"));
+				String middleName=(rs.getString("middleName"));
+				String lastName=(rs.getString("lastName"));
+				String city=(rs.getString("city"));
+				int mobile=(rs.getInt("mobile"));
+				int marks=(rs.getInt("marks"));
+				System.out.println(roll_no+" "+firstName+" "+middleName+" "+lastName+" "+city+" "+mobile+" "+marks);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void searchstud(int roll_no) {
+		query="select studreg.roll_no,studreg.firstName,studreg.middleName,studreg.lastName,studreg.city,studreg.mobile,course.marks from studreg ,course where studreg.roll_no=? " ;
+		ResultSet rs=null;
+		
+		try {
+			ps=conn.prepareStatement(query);
+			ps.setInt(1, roll_no);
+			rs=ps.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			if(rs.next()) {
+				
+				roll_no=(rs.getInt("roll_no"));
+				String firstName=(rs.getString("firstName"));
+				String middleName=(rs.getString("middleName"));
+				String lastName=(rs.getString("lastName"));
+				String city=(rs.getString("city"));
+				int mobile=(rs.getInt("mobile"));
+				int marks=(rs.getInt("marks"));
+				System.out.println(roll_no+" "+firstName+" "+middleName+" "+lastName+" "+city+" "+mobile+" "+marks);
+				
+			}
+			else {
+				System.err.println("plz enter correct Roll number");
+				
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
