@@ -7,8 +7,7 @@ public class DBUtility {
 	public static Connection makeConnection() {
 		
 		Connection conn=null;
-		try {
-			
+		try {			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/Quiz","root","root");
 	
