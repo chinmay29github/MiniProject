@@ -60,9 +60,9 @@ public class DisplayQuestions {
 	public static void addMarks(int marks, String grade) {
 		try {
 			Connection con = ConnectionProvider.getConnectionDetails();
-			PreparedStatement ps = con.prepareStatement("insert into result(marks,grade)values(?,?)");
-			ps.setInt(1, marks);
-			ps.setString(2, grade);
+			PreparedStatement ps = con.prepareStatement("insert into marks(marks,grade)values(?,?)");
+			ps.setInt(2, marks);
+			ps.setString(3, grade);
 			int i = ps.executeUpdate();
 			System.out.println("Marks Uploaded..."+i);
 			ps.close();
