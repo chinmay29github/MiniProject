@@ -11,20 +11,20 @@ import java.util.Scanner;
 
 public class Impl {
 	
-	Connection conn=DBUtility.makeConnection();
+	Connection conn=ConnectionProvider.getConnectionDetails();
 	PreparedStatement ps;
 	String query;
 	int i;
 	
-	public void checkStud(int roll_no,String passward) {
-		query="select * from studreg where roll_no=? And passward=?";
+	public void checkStud(String emailID,String password) {
+		query="select * from studentregister where emailID=? And password=?";
 		ResultSet rs=null;
 		Scanner sc=new Scanner(System.in);
 		
 		try {
 			ps=conn.prepareStatement(query);
-			ps.setInt(1, roll_no);
-			ps.setString(2, passward);
+			ps.setString(6, emailID);
+			ps.setString(7, password);
 			rs=ps.executeQuery();
 			
 			if(rs.next()) {
@@ -33,10 +33,10 @@ public class Impl {
 				if(y.equals('y')) {
 					query="select roll_no from course where roll_no=? ";
 					ps=conn.prepareStatement(query);
-					ps.setInt(1, roll_no);
+					ps.setString(6, emailID);
 					rs=ps.executeQuery();
 					if(rs.next()) {
-						System.out.println("y are already attending the quiz");
+						System.out.println("you have already attended the quiz");
 					}
 					else {
 						System.out.println("start quize");
@@ -106,27 +106,26 @@ public class Impl {
 	
 	public void displaystud(){
 		
-		query="select studreg.roll_no,studreg.firstName,studreg.middleName,studreg.lastName,studreg.city,studreg.mobile,course.marks from studreg left join course on\r\n"
-				+ "studreg.roll_no=course.roll_no";
+		query="select * from studentregister";
 		try {
 
 			Statement stmt=conn.createStatement();
 			ResultSet rs=stmt.executeQuery(query);
 			while(rs.next()) {
 				
-				int roll_no=(rs.getInt("roll_no"));
+//				int roll_no=(rs.getInt("roll_no"));
 				String firstName=(rs.getString("firstName"));
 				String middleName=(rs.getString("middleName"));
 				String lastName=(rs.getString("lastName"));
 				String city=(rs.getString("city"));
-				int mobile=(rs.getInt("mobile"));
-				int marks=(rs.getInt("marks"));
-				System.out.println(roll_no+" "+firstName+" "+middleName+" "+lastName+" "+city+" "+mobile+" "+marks);
+				int mobile=(rs.getInt("mobileNo"));
+//				int marks=(rs.getInt("marks"));
+				System.out.println(firstName+" "+middleName+" "+lastName+" "+city+" "+mobile);
 			}
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 	}

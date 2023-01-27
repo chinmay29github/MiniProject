@@ -37,12 +37,37 @@ public class DisplayQuestions {
 			if(y.equalsIgnoreCase("Y")) {
 				System.out.println("Your Exam is Submitted Successfully.");
 			}
+			String grade=null;
+			if(marks>=8) {
+				grade="A";
+			}else if(marks>=6 && marks<8) {
+				grade="B";
+			}else if(marks==5) {
+				grade="C";
+			}else {
+				grade="Fail";
+			}
+			addMarks(marks, grade);
 			System.out.println("You scored "+marks+" marks out of 10");
 			con.close();
 			ps.close();
 			rs.close();	
 			sc.close();
 		} catch ( Exception e) {		
+			e.printStackTrace();
+		}
+	}
+	public static void addMarks(int marks, String grade) {
+		try {
+			Connection con = ConnectionProvider.getConnectionDetails();
+			PreparedStatement ps = con.prepareStatement("insert into result(marks,grade)values(?,?)");
+			ps.setInt(1, marks);
+			ps.setString(2, grade);
+			int i = ps.executeUpdate();
+			System.out.println("Marks Uploaded..."+i);
+			ps.close();
+			con.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -13,8 +13,8 @@ public class Test {
 		System.out.println("============================================================");
 		int ch=1;
 		while(ch!=0) {
-		System.out.println("registration press 1");
-		System.out.println("login press 2");
+		System.out.println("For Registration press 1");
+		System.out.println("To login press 2");
 		System.out.println("press 3 for Exit");
 		System.out.println("press 4 to display all stud");
 		System.out.println("press 5 to search details");
@@ -24,21 +24,21 @@ public class Test {
 		System.out.println("*******************************************************");
 		switch (ch) {
 		
-		case 1:System.out.println("register the stud");
-		       InsertData id=new InsertData();
-		       id.insertStudentData(null, null, null, ch, null, null, null);
+		case 1:System.out.println("Start Your Registration");
+		       InsertData.doRegistration();
 			break;
-		case 2:System.out.println("login stud");
+			
+		case 2:System.out.println("login with Username & Password");
 		
 		
-		int roll_no;
-		String passward;
+		String emailID;
+		String password;
 		System.out.println("enter rno ");
-		roll_no=sc.nextInt();
+		emailID=sc.nextLine();
 		sc.nextLine();
 		System.out.println("enter passward ");
-		passward=sc.nextLine();
-		impl.checkStud(roll_no, passward);
+		password=sc.nextLine();
+		impl.checkStud(emailID, password);
 		System.out.println("************************************************************");
 		break;
 		case 3:

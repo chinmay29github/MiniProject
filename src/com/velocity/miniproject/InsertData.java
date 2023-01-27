@@ -11,8 +11,7 @@ public class InsertData {
 	public void insertStudentData(String firstName, String middleName, String lastName, long mobileNo, String city,
 			String emailID, String password) {
 		try {
-			ConnectionProvider cp = new ConnectionProvider();
-			con = cp.getConnectionDetails();
+			con = ConnectionProvider.getConnectionDetails();
 			ps = con.prepareStatement(
 					"insert into studentregister(firstName,middleName,lastName,mobileNo,city,emailID,password)values(?,?,?,?,?,?,?)");
 			ps.setString(1, firstName);
