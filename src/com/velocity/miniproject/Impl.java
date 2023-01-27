@@ -9,13 +9,14 @@ import java.util.Scanner;
 
 
 
-public class Impl {
+public class Impl{
 	
 	Connection conn=DBUtility.makeConnection();
 	PreparedStatement ps;
 	String query;
 	int i;
 	static int marks;
+	
 	public void checkStud(int roll_no,String password) {
 		
 		
@@ -31,7 +32,9 @@ public class Impl {
 			rs=ps.executeQuery();
 			
 			if(rs.next()) {
+				System.out.println("==================================================================================================================");
 				System.out.println("Press y to start the quiz");
+				System.out.println("==================================================================================================================");
 				Character y=sc.nextLine().charAt(0);
 				if(y.equals('y')) {
 					query="select roll_no from marks where roll_no=? ";
@@ -39,10 +42,12 @@ public class Impl {
 					ps.setInt(1, roll_no);
 					rs=ps.executeQuery();
 					if(rs.next()) {
-						System.out.println("you have already attended the quiz");
+						System.out.println("==================================================================================================================");
+						System.out.println("You have already attended the Quiz");
+						System.out.println("==================================================================================================================");
 					}
 					else {
-						System.out.println("start quize");
+						System.out.println("Start Quiz");
 						int marks=displayQuestiond();
 						grade=" ";
 						if(marks>=8) {
@@ -71,7 +76,7 @@ public class Impl {
 							
 							
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
+						
 							e.printStackTrace();
 						}
 						
@@ -86,17 +91,21 @@ public class Impl {
 			}
 			else {
 
-				throw new StudNotValidException();
-				
-			}
+			throw new StudNotValidException();
+			  }
+			
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 		
+	
+		
 	}
+	
+	
 	
 	public int displayQuestiond() {
 		
@@ -125,13 +134,18 @@ public class Impl {
 		}
 		
 		}
-		System.out.println("You Have Attempted all Questions Successfully\n"+
-		"Press 'Y' to Submit your Exam");
+		System.out.println("==================================================================================================================");
+		System.out.println("You Have Attempted all Questions Successfully\n"+"Press 'Y' to Submit your Exam");
+		System.out.println("==================================================================================================================");
 		String y = sc.next();
 		if(y.equalsIgnoreCase("Y")) {
+			System.out.println("==================================================================================================================");
 			System.out.println("Your Exam is Submitted Successfully.");
+			System.out.println("==================================================================================================================");
 		}
+		System.out.println("==================================================================================================================");
 		System.out.println("You scored "+marks+" marks out of 10");
+		System.out.println("==================================================================================================================");
 		
 		
 		
@@ -166,7 +180,10 @@ public class Impl {
 				String emailId=(rs.getString("emailID"));
 				int marks=(rs.getInt("marks"));
 				String grade=(rs.getString("grade"));
-				System.out.println(roll_no+" "+firstName+" "+middleName+" "+lastName+" "+city+" "+mobile+" "+emailId+" "+marks+" "+grade);
+				System.out.println("==================================================================================================================");
+				System.out.println(" Roll NO " + " FirstName " + " MiddleName " + " LastName " + "  City  " + " Mobile NO "+"   Email ID   " + "              Marks  " + "      Grade ");
+				System.out.println("   "+roll_no+"      "+firstName+"      "+middleName+"     "+lastName+"     "+city+"     "+mobile+"     "+emailId+"     "+marks+"           "+grade);
+				System.out.println("==================================================================================================================");
 				
 			}
 			
@@ -203,8 +220,10 @@ public class Impl {
 				String emailId=(rs.getString("emailID"));
 				int marks=(rs.getInt("marks"));
 				String grade=(rs.getString("grade"));
-				System.out.println(roll_no+" "+firstName+" "+middleName+" "+lastName+" "+city+" "+mobile+" "+emailId+" "+marks+" "+grade);
-				
+				System.out.println("==================================================================================================================");
+				System.out.println(" Roll NO " + " FirstName " + " MiddleName " + " LastName " + "  City  " + " Mobile NO "+"   Email ID   " + "      Marks  " + "    Greade ");
+				System.out.println("   "+ roll_no+ " "+"      "+firstName+"  "+"  "+middleName+"  "+"     "+lastName+" "+" "+ city+"  "+"   "+mobile+"  "+"  "+emailId+"  "+"   "+marks+"      "+"  "+grade);
+				System.out.println("==================================================================================================================");
 			}
 			else {
 				System.err.println("plz enter correct Roll number");

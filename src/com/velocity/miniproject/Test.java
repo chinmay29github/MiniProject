@@ -1,79 +1,91 @@
 package com.velocity.miniproject;
 
+
 import java.util.Scanner;
 
-public class Test {
-
-	public static void main(String[] args) {
+public class Test
+{	
+public static void main(String[] args) 
+{	
 		Scanner sc=new Scanner(System.in);
 		Impl impl=new Impl();
 		
-		//************************************************************************
-		System.out.println("Welcome");
-		System.out.println("============================================================");
+		System.out.println("==================================================================================================================");
+		System.out.println("                  ********************** Welcome TO EXAM SYSTEM **********************                                          ");
+		System.out.println("==================================================================================================================");
 		int ch=1;
 		while(ch!=0) {
-		System.out.println("For Registration press 1");
-		System.out.println("To login press 2");
-		System.out.println("press 3 for Exit");
-		System.out.println("press 4 to display all stud");
-		System.out.println("press 5 to search details");
-		System.out.println("*******************************************************");
-		System.out.println("enter ur choice");
+		System.out.println(" Select Your Option                                               ");
+		System.out.println("==================================================================================================================");
+		System.out.println("For Registration Press  ' 1 ' ");
+		System.out.println("To Login Press ' 2 ' ");
+		System.out.println("Press ' 3 '  for Exit");
+		System.out.println("Press ' 4 ' to Display all Students Data");
+		System.out.println("Press ' 5 '  to Search Particular details of Students");
+		System.out.println("==================================================================================================================");
+		System.out.println("Enter your choice");
 		ch=sc.nextInt();
-		System.out.println("*******************************************************");
-		switch (ch) {
+		System.out.println("==================================================================================================================");
 		
-		case 1:System.out.println("*********************************************************");
-			System.out.println("Start Your Registration");
+		switch (ch) {
+		case 1:
+			System.out.println("==================================================================================================================");
+	        System.out.println("                          Start Your Registration                                                       ");
+			System.out.println("==================================================================================================================");
 		       InsertData.doRegistration();
-		       System.out.println("***********************************************************");
+		       System.out.println("==================================================================================================================");
 			break;
 			
-		case 2:System.out.println("*****************************************************************");
-			System.out.println("login with roll_no & Password");
+		case 2:
+			System.out.println("==================================================================================================================");
+		    System.out.println("Login with your Roll NO  and  Password                                                              ");
+		    System.out.println("==================================================================================================================");
 		
 		
 		int roll_no;
 		String password;
-		System.out.println("enter roll_no");
+		System.out.println("==================================================================================================================");
+		System.out.println("Enter Roll No                                                  ");
 		roll_no=sc.nextInt();
 		sc.nextLine();
-		System.out.println("enter passward ");
+		
+		System.out.println("Enter Password                                                                   ");
+		
 		password=sc.nextLine();
 		impl.checkStud(roll_no, password);
-		System.out.println("************************************************************");
+		System.out.println("==================================================================================================================");
 		break;
 		case 3:
 			System.exit(0);
 			break;
 			
 		case 4:
-			System.out.println("**************************************************************");
-			System.out.println("stud details are");
+			System.out.println("==================================================================================================================");
+			System.out.println("Student Details are ");
 			impl.displaystud();
-			System.out.println("*************************************************");
+			System.out.println("==================================================================================================================");
 		break;
 		case 5:
-			System.out.println("********************************************************");
-			System.out.println("your details are");
-			System.out.println("enter rno for search");
+			System.out.println("==================================================================================================================");
+			System.out.println("Your Details are ");
+			System.out.println("==================================================================================================================");
+			System.out.println("Enter your RollNo to search your Result");
 			int rno=sc.nextInt();
 			impl.searchstud(rno);
-			System.out.println("*************************************************");
+			System.out.println("==================================================================================================================");
 		break;
 		
 		default:
-			System.out.println("***************************************************");
+			System.out.println("==================================================================================================================");
 			System.out.println("invalid choice");
-			System.out.println("***********************************************************************");
+			System.out.println("==================================================================================================================");
 			break;
 		}
 		}
 		
 		
 		
-		//************************************************************************
+	
 
 	}
 

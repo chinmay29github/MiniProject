@@ -9,7 +9,7 @@ public class DBUtility {
 		Connection conn=null;
 		try {			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/Quiz","root","root");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/Quiz","root","admin");
 	
 		} catch (Exception e) {
 			// TODO: handle exception

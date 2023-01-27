@@ -59,7 +59,7 @@ public class DisplayQuestions {
 	}
 	public static void addMarks(int marks, String grade) {
 		try {
-			Connection con = ConnectionProvider.getConnectionDetails();
+			Connection con = DBUtility.makeConnection();
 			PreparedStatement ps = con.prepareStatement("insert into marks(marks,grade)values(?,?)");
 			ps.setInt(2, marks);
 			ps.setString(3, grade);

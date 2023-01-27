@@ -12,7 +12,7 @@ public class InsertData {
 	public void insertStudentData(String firstName, String middleName, String lastName, long mobileNo, String city,
 			String emailID, String password) {
 		try {
-			con = ConnectionProvider.getConnectionDetails();
+			con = DBUtility.makeConnection();
 			ps = con.prepareStatement(
 					"insert into studentregister(firstName,middleName,lastName,mobileNo,city,emailID,password)values(?,?,?,?,?,?,?)");
 			ps.setString(1, firstName);
@@ -24,7 +24,9 @@ public class InsertData {
 			ps.setString(7, password);
 			
 			int i = ps.executeUpdate();
+			System.out.println("==================================================================================================================");
 			System.out.println("Student Registration Successful..." + i);
+			System.out.println("==================================================================================================================");
 			
 
 		} catch (Exception e) {
@@ -49,12 +51,14 @@ public class InsertData {
 		String password = sc.next();
 		InsertData data = new InsertData();
 		data.insertStudentData(firstname, middlename, lastname, mobileno, city,email, password);
+		System.out.println("==================================================================================================================");
 		System.out.println("Please Check your Login Details below");
 		
 		String query="select * from studentregister where emailID=? and password=?";
 		
+		
 		try {
-			con = ConnectionProvider.getConnectionDetails();
+			con = DBUtility.makeConnection();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,8 +69,10 @@ public class InsertData {
 		ps.setString(2,password );
 		rs=ps.executeQuery();
 		if(rs.next()) {
+			System.out.println("==================================================================================================================");
 			System.out.println("student rollNo- "+rs.getInt(1));
 			System.out.println("Password- "+rs.getString(8));
+			System.out.println("==================================================================================================================");
 		}
 		
 		}catch (Exception e) {
