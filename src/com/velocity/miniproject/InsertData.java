@@ -21,6 +21,7 @@ public class InsertData {
 			ps.setString(5, city);
 			ps.setString(6, emailID);
 			ps.setString(7, password);
+			
 			int i = ps.executeUpdate();
 			System.out.println("Student Registration Successful..." + i);
 			ps.close();
@@ -46,13 +47,12 @@ public class InsertData {
 		String email = sc.next();
 		System.out.println("Set New Password");
 		String password = sc.next();
-
 		InsertData data = new InsertData();
 		data.insertStudentData(firstname, middlename, lastname, mobileno, city,email, password);
 		System.out.println("Please Check your Login Details below");
 		System.out.println("Username : "+email);
 		System.out.println("Password : "+password);
-		sc.close();
+		
 	}
 
 	public static void main(String[] args) {

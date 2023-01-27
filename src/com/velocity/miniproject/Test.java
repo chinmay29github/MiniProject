@@ -26,19 +26,20 @@ public class Test {
 		
 		case 1:System.out.println("Start Your Registration");
 		       InsertData.doRegistration();
+		       
 			break;
 			
 		case 2:System.out.println("login with Username & Password");
 		
 		
-		String emailID;
+		int roll_no;
 		String password;
-		System.out.println("enter rno ");
-		emailID=sc.nextLine();
+		System.out.println("enter roll_no");
+		roll_no=sc.nextInt();
 		sc.nextLine();
 		System.out.println("enter passward ");
 		password=sc.nextLine();
-		impl.checkStud(emailID, password);
+		impl.checkStud(roll_no, password);
 		System.out.println("************************************************************");
 		break;
 		case 3:
