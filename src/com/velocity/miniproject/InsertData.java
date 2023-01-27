@@ -2,12 +2,13 @@ package com.velocity.miniproject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class InsertData {
-	PreparedStatement ps = null;
-	Connection con = null;
-
+	static PreparedStatement ps = null;
+	static Connection con = null;
+	static ResultSet rs=null;
 	public void insertStudentData(String firstName, String middleName, String lastName, long mobileNo, String city,
 			String emailID, String password) {
 		try {
@@ -24,8 +25,7 @@ public class InsertData {
 			
 			int i = ps.executeUpdate();
 			System.out.println("Student Registration Successful..." + i);
-			ps.close();
-			con.close();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,9 +50,28 @@ public class InsertData {
 		InsertData data = new InsertData();
 		data.insertStudentData(firstname, middlename, lastname, mobileno, city,email, password);
 		System.out.println("Please Check your Login Details below");
-		System.out.println("Username : "+email);
-		System.out.println("Password : "+password);
 		
+		String query="select * from studentregister where emailID=? and password=?";
+		
+		try {
+			con = ConnectionProvider.getConnectionDetails();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+		ps=con.prepareStatement(query);
+		ps.setString(1, email );
+		ps.setString(2,password );
+		rs=ps.executeQuery();
+		if(rs.next()) {
+			System.out.println("student rollNo- "+rs.getInt(1));
+			System.out.println("Password- "+rs.getString(8));
+		}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {

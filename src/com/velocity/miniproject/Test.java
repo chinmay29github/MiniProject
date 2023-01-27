@@ -24,12 +24,14 @@ public class Test {
 		System.out.println("*******************************************************");
 		switch (ch) {
 		
-		case 1:System.out.println("Start Your Registration");
+		case 1:System.out.println("*********************************************************");
+			System.out.println("Start Your Registration");
 		       InsertData.doRegistration();
-		       
+		       System.out.println("***********************************************************");
 			break;
 			
-		case 2:System.out.println("login with Username & Password");
+		case 2:System.out.println("*****************************************************************");
+			System.out.println("login with roll_no & Password");
 		
 		
 		int roll_no;
@@ -47,13 +49,13 @@ public class Test {
 			break;
 			
 		case 4:
-			
+			System.out.println("**************************************************************");
 			System.out.println("stud details are");
 			impl.displaystud();
 			System.out.println("*************************************************");
 		break;
 		case 5:
-			
+			System.out.println("********************************************************");
 			System.out.println("your details are");
 			System.out.println("enter rno for search");
 			int rno=sc.nextInt();
@@ -62,7 +64,9 @@ public class Test {
 		break;
 		
 		default:
+			System.out.println("***************************************************");
 			System.out.println("invalid choice");
+			System.out.println("***********************************************************************");
 			break;
 		}
 		}

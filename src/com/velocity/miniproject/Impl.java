@@ -151,7 +151,7 @@ public class Impl {
 		
 		query="select studentregister.roll_no,studentregister.firstName,studentregister.middleName,"
 				+ "studentregister.lastName,studentregister.city,studentregister.mobileNo,studentregister.emailID,"
-				+ "marks.marks,marks.grade from studentregister right join marks on studentregister.roll_no=marks.roll_no ";
+				+ "marks.marks,marks.grade from studentregister left join marks on studentregister.roll_no=marks.roll_no ";
 		try {
 
 			Statement stmt=conn.createStatement();
