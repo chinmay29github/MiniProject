@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class StudNotValidException extends RuntimeException{
 
 	public StudNotValidException() {
-		System.err.println("you are not register then do registration press '1' ");
-		System.err.println("you are register then enter valid data press '2'");
+		System.err.println("You have entered wrong details");
+		System.err.println("If you have not done registration then To do registration press '1' ");
+		System.err.println("If you are already registered then enter valid input press '2' to login again");
 		
 		
 		  int ch=1; 
