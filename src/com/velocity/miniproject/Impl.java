@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 
-
 public class Impl{
 	
 	Connection conn=DBUtility.makeConnection();
@@ -83,17 +82,12 @@ public class Impl{
 							if(i>0) {
 								System.out.println("Thank you");
 							}
-							
-							
+									
 						} catch (SQLException e) {
 						
 							e.printStackTrace();
-						}
-						
-						
-				
-					}
-				
+						}				
+					}		
 				}
 				else {
 					System.exit(0);
@@ -104,16 +98,9 @@ public class Impl{
 				} 
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		}
-		
-	
-		
+			e.printStackTrace();	
+		}	
 	}
-	
-	
-	
 	public int displayQuestiond() {
 		
 		try {
@@ -154,18 +141,11 @@ public class Impl{
 		System.out.println("You scored "+marks+" marks out of 10");
 		System.out.println("==================================================================================================================");
 		
-		
-		
-		
-		
-		
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return marks;
-		
-	
 	}
 	
 	public void displaystud(){
@@ -193,10 +173,7 @@ public class Impl{
 				System.out.println("==================================================================================================================");
 				
 			}
-			
-			
 		} catch (SQLException e) {
-		
 			e.printStackTrace();
 		}
 	}
@@ -211,13 +188,11 @@ public class Impl{
 			rs=ps.executeQuery();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
 			if(rs.next()) {
-				
 				roll_no=(rs.getInt("roll_no"));
 				String firstName=(rs.getString("firstName"));
 				String middleName=(rs.getString("middleName"));
@@ -233,18 +208,11 @@ public class Impl{
 				System.out.println("==================================================================================================================");
 			}
 			else {
-				System.err.println("plz enter correct Roll number");
-				
-			}
-			
-			
-			
-			
+				System.err.println("plz enter correct Roll number");	
+			}	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
-	
 }

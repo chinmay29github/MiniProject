@@ -46,19 +46,7 @@ public static void main(String[] args)
 		
 		
 		int roll_no;
-		/*
-		 * String password; System.out.println(
-		 * "=================================================================================================================="
-		 * ); System.out.
-		 * println("Enter Roll No                                                  ");
-		 * roll_no=sc.nextInt(); sc.nextLine();
-		 * 
-		 * System.out.
-		 * println("Enter Password                                                                   "
-		 * );
-		 * 
-		 * password=sc.nextLine();
-		 */
+		
 		impl.checkStud();
 		System.out.println("==================================================================================================================");
 		break;
