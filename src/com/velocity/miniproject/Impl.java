@@ -27,8 +27,7 @@ public class Impl{
 		System.out.println("Enter Password                                                                   ");
 		
 		password=sc.nextLine();
-		
-		
+				
 		String grade;
 		query="select emailID,password from studentregister where roll_no=? and password=?";
 		ResultSet rs=null;
@@ -211,7 +210,7 @@ public class Impl{
 				System.err.println("plz enter correct Roll number");	
 			}	
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}	
 	}
