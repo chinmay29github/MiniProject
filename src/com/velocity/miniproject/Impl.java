@@ -16,8 +16,18 @@ public class Impl{
 	String query;
 	int i;
 	static int marks;
-	
-	public void checkStud(int roll_no,String password) {
+	Scanner sc=new Scanner(System.in);
+	public void checkStud() {
+		
+		String password;
+		System.out.println("==================================================================================================================");
+		System.out.println("Enter Roll No                                                  ");
+		int roll_no=sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Enter Password                                                                   ");
+		
+		password=sc.nextLine();
 		
 		
 		String grade;
@@ -90,11 +100,8 @@ public class Impl{
 				}
 			}
 			else {
-
-			throw new StudNotValidException();
-			  }
-			
-			
+					throw new StudNotValidException();	
+				} 
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

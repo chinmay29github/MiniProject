@@ -49,10 +49,7 @@ public class DisplayQuestions {
 			}
 			addMarks(marks, grade);
 			System.out.println("You scored "+marks+" marks out of 10");
-			con.close();
-			ps.close();
-			rs.close();	
-			sc.close();
+			
 		} catch ( Exception e) {		
 			e.printStackTrace();
 		}

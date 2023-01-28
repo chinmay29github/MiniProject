@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class InsertData {
-	static PreparedStatement ps = null;
-	static Connection con = null;
-	static ResultSet rs=null;
+	 static PreparedStatement ps = null;
+	 static Connection con = null;
+	 static ResultSet rs=null;
 	public void insertStudentData(String firstName, String middleName, String lastName, long mobileNo, String city,
 			String emailID, String password) {
 		try {
@@ -59,11 +59,7 @@ public class InsertData {
 		
 		try {
 			con = DBUtility.makeConnection();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+		
 		ps=con.prepareStatement(query);
 		ps.setString(1, email );
 		ps.setString(2,password );
