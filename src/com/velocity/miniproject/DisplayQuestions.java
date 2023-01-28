@@ -31,12 +31,18 @@ public class DisplayQuestions {
 				}x++;
 			}
 			}
-			System.out.println("You Have Attempted all Questions Successfully\n"+
-			"Press 'Y' to Submit your Exam");
+			System.out.println("==================================================================================================================");
+			System.out.println("You Have Attempted all Questions Successfully\n"+"Press 'Y' to Submit your Exam");
+			System.out.println("==================================================================================================================");
 			String y = sc.next();
 			if(y.equalsIgnoreCase("Y")) {
+				System.out.println("==================================================================================================================");
 				System.out.println("Your Exam is Submitted Successfully.");
+				System.out.println("==================================================================================================================");
 			}
+			System.out.println("==================================================================================================================");
+			System.out.println("You scored "+marks+" marks out of 10");
+			System.out.println("==================================================================================================================");
 			String grade=null;
 			if(marks>=8) {
 				grade="A";
@@ -48,7 +54,7 @@ public class DisplayQuestions {
 				grade="Fail";
 			}
 			addMarks(marks, grade);
-			System.out.println("You scored "+marks+" marks out of 10");
+			
 			con.close();
 			ps.close();
 			rs.close();	
@@ -61,10 +67,10 @@ public class DisplayQuestions {
 		try {
 			Connection con = DBUtility.makeConnection();
 			PreparedStatement ps = con.prepareStatement("insert into marks(marks,grade)values(?,?)");
-			ps.setInt(2, marks);
-			ps.setString(3, grade);
+			ps.setInt(1, marks);
+			ps.setString(2, grade);
 			int i = ps.executeUpdate();
-			System.out.println("Marks Uploaded..."+i);
+			
 			ps.close();
 			con.close();
 		} catch (Exception e) {
