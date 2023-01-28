@@ -3,6 +3,7 @@ package com.velocity.miniproject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InsertData {
@@ -35,6 +36,9 @@ public class InsertData {
 	}
 	public static void doRegistration() {
 		Scanner sc = new Scanner(System.in);
+		String email;
+		String password;
+		try {
 		System.out.println("Enter your First Name");
 		String firstname = sc.next();
 		System.out.println("Enter your Middle Name");
@@ -46,18 +50,23 @@ public class InsertData {
 		System.out.println("Enter your city");
 		String city = sc.next();
 		System.out.println("Enter your email ID");
-		String email = sc.next();
+		email = sc.next();
 		System.out.println("Set New Password");
-		String password = sc.next();
+		password = sc.next();
+		
 		InsertData data = new InsertData();
 		data.insertStudentData(firstname, middlename, lastname, mobileno, city,email, password);
 		System.out.println("==================================================================================================================");
 		System.out.println("Please Check your Login Details below");
 		
+		
+		
 		String query="select * from studentregister where emailID=? and password=?";
 		
 		
-		try {
+		
+			
+		
 			con = DBUtility.makeConnection();
 		
 		ps=con.prepareStatement(query);
@@ -70,14 +79,13 @@ public class InsertData {
 			System.out.println("Password- "+rs.getString(8));
 			System.out.println("==================================================================================================================");
 		}
+	 
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
 		
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 	}
-
-	public static void main(String[] args) {
-		doRegistration();
-	}
+	
 
 }
