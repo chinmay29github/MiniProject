@@ -71,8 +71,6 @@ public class DisplayQuestions {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		displayQuestions();
-	}
+
 
 }

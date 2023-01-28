@@ -47,7 +47,9 @@ public class Impl{
 						System.out.println("==================================================================================================================");
 					}
 					else {
+						System.out.println("==================================================================================================================");
 						System.out.println("Start Quiz");
+						System.out.println("==================================================================================================================");
 						int marks=displayQuestiond();
 						grade=" ";
 						if(marks>=8) {
@@ -71,9 +73,22 @@ public class Impl{
 							ps.setString(3, grade);
 							i=ps.executeUpdate();
 							if(i>0) {
+								System.out.println("==================================================================================================================");	
 								System.out.println("Thank you");
+								System.out.println("==================================================================================================================");
 							}
-							
+							System.out.println("Press ' 1 ' to continue or Press ' 2 ' to exit ");
+							System.out.println("==================================================================================================================");
+							int choice = sc.nextInt();
+							if(choice == 1)
+							{
+								Test t= new Test();
+							    t.displayData();
+							}
+							else
+							{
+							  System.exit(0);
+							}
 							
 						} catch (SQLException e) {
 						
@@ -141,17 +156,12 @@ public class Impl{
 		if(y.equalsIgnoreCase("Y")) {
 			System.out.println("==================================================================================================================");
 			System.out.println("Your Exam is Submitted Successfully.");
-			System.out.println("==================================================================================================================");
+			
 		}
-		System.out.println("==================================================================================================================");
+		
 		System.out.println("You scored "+marks+" marks out of 10");
 		System.out.println("==================================================================================================================");
-		
-		
-		
-		
-		
-		
+
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -182,7 +192,7 @@ public class Impl{
 				String grade=(rs.getString("grade"));
 				System.out.println("==================================================================================================================");
 				System.out.println(" Roll NO " + " FirstName " + " MiddleName " + " LastName " + "  City  " + " Mobile NO "+"   Email ID   " + "              Marks  " + "      Grade ");
-				System.out.println("   "+roll_no+"      "+firstName+"      "+middleName+"     "+lastName+"     "+city+"     "+mobile+"     "+emailId+"     "+marks+"           "+grade);
+				System.out.println(" "+roll_no+"      "+firstName+"      "+middleName+"     "+lastName+"     "+city+"     "+mobile+"     "+emailId+"     "+marks+"           "+grade);
 				System.out.println("==================================================================================================================");
 				
 			}
@@ -204,7 +214,7 @@ public class Impl{
 			rs=ps.executeQuery();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -234,7 +244,7 @@ public class Impl{
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
