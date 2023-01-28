@@ -183,7 +183,7 @@ public class Impl{
 				String middleName=(rs.getString("middleName"));
 				String lastName=(rs.getString("lastName"));
 				String city=(rs.getString("city"));
-				int mobile=(rs.getInt("mobileNo"));
+				long mobile=(rs.getLong("mobileNo"));
 				String emailId=(rs.getString("emailID"));
 				int marks=(rs.getInt("marks"));
 				String grade=(rs.getString("grade"));
@@ -223,7 +223,7 @@ public class Impl{
 				String middleName=(rs.getString("middleName"));
 				String lastName=(rs.getString("lastName"));
 				String city=(rs.getString("city"));
-				int mobile=(rs.getInt("mobileNo"));
+				long mobile=(rs.getInt("mobileNo"));
 				String emailId=(rs.getString("emailID"));
 				int marks=(rs.getInt("marks"));
 				String grade=(rs.getString("grade"));
